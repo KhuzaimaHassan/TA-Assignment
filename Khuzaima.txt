@@ -1,0 +1,4 @@
+I am proficient in Python programming and have hands-on experience with libraries like NumPy, Pandas, and Matplotlib for data analysis and visualization. 
+I am also skilled in problem-solving and have a strong foundation in algorithms and data structures. 
+Additionally, I have experience with Git for version control and enjoy working on collaborative projects. 
+My communication and teamwork abilities allow me to contribute effectively in group settings.
