@@ -1,0 +1,35 @@
+# Step 1: Load necessary libraries
+if (!require("caret")) install.packages("caret", dependencies = TRUE)  
+if (!require("e1071")) install.packages("e1071", dependencies = TRUE)  
+
+library(caret)  # For data partitioning and evaluation
+library(e1071)  # For Naive Bayes
+
+# Step 2: Load and inspect the dataset
+data(iris)  
+head(iris) 
+summary(iris) 
+str(iris) 
+
+# Step 3: Split the dataset into training and testing sets
+set.seed(123)  # For reproducibility
+trainIndex <- createDataPartition(iris$Species, p = 0.8, list = FALSE)
+trainData <- iris[trainIndex, ]
+testData <- iris[-trainIndex, ]
+
+# Step 4: Train a Naive Bayes model on the training data
+nb_model <- naiveBayes(Species ~ ., data = trainData)
+
+# Step 5: Make predictions on the test set
+predictions <- predict(nb_model, testData)
+
+# Step 6: Evaluate the model's performance
+conf_matrix <- confusionMatrix(predictions, testData$Species)
+accuracy <- conf_matrix$overall['Accuracy']
+
+# Display results
+print("Confusion Matrix:")
+print(conf_matrix$table)
+print(paste("Accuracy:", round(accuracy * 100, 2), "%"))
+
+
